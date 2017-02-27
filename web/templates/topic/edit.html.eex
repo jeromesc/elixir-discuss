@@ -1,0 +1,12 @@
+<!-- 
+  topic_path(@conn, :update, @topic) we passing the entire @topic
+  struct but phoenix will take only the id.
+  /topics/:id/edit
+-->
+<%= form_for @changeset, topic_path(@conn, :update, @topic), fn f -> %>
+  <div class="form-group">
+    <%= text_input f, :title, placeholder: "Title", class: "form-control" %>
+    <%= error_tag f, :title %>
+  </div>
+    <%= submit "Save Topic", class: "btn btn-primary" %>
+<% end %>
