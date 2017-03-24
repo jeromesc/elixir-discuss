@@ -10,6 +10,7 @@ defmodule Discuss.Router do
     plug :put_secure_browser_headers
     # module plug
     plug Discuss.Plugs.SetUser
+
   end
 
   pipeline :api do

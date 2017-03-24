@@ -15,6 +15,12 @@ defmodule Discuss.AuthController do
     sign_in(conn, changeset)
   end
 
+def callback(%{assigns: %{ueberauth_failure: _fails}} = conn, _params) do
+    conn
+    |> put_flash(:error, "Failed to authenticate.")
+    |> redirect(to: topic_path(conn, :index))
+  end
+
   def signout(conn, _params) do
     conn
     # better than put_session(:user_id, nil)
