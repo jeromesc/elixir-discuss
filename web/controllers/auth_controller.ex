@@ -4,6 +4,12 @@ defmodule Discuss.AuthController do
   # plug: ??
   plug Ueberauth
 
+  alias Ueberauth.Strategy.Helpers
+
+  def request(conn, _params) do
+    render(conn, "request.html", callback_url: Helpers.callback_url(conn))
+  end
+
   # Ueberauth assumes the callback function
   # def callback(conn, params) do
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, params) do

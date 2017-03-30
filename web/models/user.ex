@@ -7,7 +7,7 @@ defmodule Discuss.User do
     field :token, :string
     # One to many
     has_many :topics, Discuss.Topic
-
+    has_many :comments, Discuss.Comment
     timestamps()
   end
 
